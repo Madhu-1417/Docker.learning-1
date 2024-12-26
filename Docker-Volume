@@ -1,0 +1,89 @@
+
+                                       Volume in docker 
+
+Mount point and volume 
+
+Both can do the same work to store data that needs to be preserved when the container is stopped or distorted. 
+
+Problem Statement
+It is a very common requirement to persist the data in a Docker container beyond the lifetime of the container. However, the file system of a Docker container is deleted/removed when the container dies.
+Solution
+There are 2 different ways how docker solves this problem.
+1.	Volumes
+2.	Bind Directory on a host as a Mount (Bind mount)
+Bind mount- Is allows you to bind a directory inside the container. Means it bound the folder on container with the folder on the host operating system.  
+
+Volume- Volume offers better lifecycle. Means using docker cli with the docker command we can create volume. Volume is a logical partition that we are creation on the host.
+1-	better lifecycle means we are getting advantage of managing, creating, destroying the volume. 
+2-	We can create volume multiple place like – on the same host, ec2, nfs, external storage device S3 these are external sources. 
+3-	host has not that big disk or When container requires house amount of volume this volume later point of time be taken as a backup, to do all of things your host will be with very limited resources.  Volume offers you some external storage devices so later point of time you can easily, and you move them from this cloud provider to your local storage. 
+   
+ 
+Volumes
+Volume is a logical partition that are creation on a host. 
+Volumes aims to solve the same problem by providing a way to store data on the host file system, separate from the container's file system, so that the data can persist even if the container is deleted and recreated.
+
+
+
+
+
+
+	
+ 
+Volumes can be created and managed using the docker volume command. You can create a new volume using the following command:
+docker volume create <volume_name>
+Once a volume is created, you can mount it to a container using the -v or --mount option when running a docker run command.
+For example:
+docker run -it -v <volume_name>:/data <image_name> /bin/bash
+This command will mount the volume <volume_name> to the /data directory in the container. Any data written to the /data directory inside the container will be persisted in the volume on the host file system.
+Bind Directory on a host as a Mount
+(Bind the directory inside the container)
+
+Bind mounts also aims to solve the same problem but in a complete different way.
+Using this way, user can mount a directory from the host file system into a container. Bind mounts have the same behavior as volumes, but are specified using a host path instead of a volume name.
+For example,
+docker run -it -v <host_path>:<container_path> <image_name> /bin/bash
+Key Differences between Volumes and Bind Directory on a host as a Mount
+Volumes are managed, created, mounted and deleted using the Docker API. However, Volumes are more flexible than bind mounts, as they can be managed and backed up separately from the host file system, and can be moved between containers and hosts.
+In a nutshell, Bind Directory on a host as a Mount are appropriate for simple use cases where you need to mount a directory from the host file system into a container, while volumes are better suited for more complex use cases where you need more control over the data being persisted in the container.
+
+
+
+
+Bind mounts
+Bind mounts have been around since the early days of Docker. Bind mounts have limited functionality compared to volumes. When you use a bind mount, a file or directory on the host machine is mounted into a container. The file or directory is referenced by its absolute path on the host machine. By contrast, when you use a volume, a new directory is created within Docker's storage directory on the host machine, and Docker manages that directory’s contents. 
+
+
+Deffrence between -v and  - - mount
+
+-v  - attaching a volume and you will pass everything in a same command. 
+
+- - mount -  this is more detail then -v it is very easy to understand user . –mount : source:container:Permissions
+
+
+Docker volume commands- 
+1-	Docker volume ls-  lists of volumes (logical partition created on the host ).  You can dedicate this volume to one container to multiple container. 
+2-	  Docker volume create volume name.   (logical partition created on the host ).  You can dedicate this volume to one container to multiple container. 
+3-	 docker inspect volume name – to inspect the volume 
+
+example-
+"CreatedAt": "2024-09-09T15:47:24Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/pinki/_data",
+        "Name": "pinki",
+        "Options": null,
+       "Scope": "local"
+
+
+4-	  Docker volume ls volume names -  to delete volume 
+
+
+
+
+
+
+
+
+
+
