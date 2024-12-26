@@ -19,7 +19,3 @@ Contents-
 8- Docker lifecycle
 
 9- Docker's terminology
-
-10- Docker volume next
-
-11- docker networking 
