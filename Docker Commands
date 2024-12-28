@@ -1,32 +1,28 @@
 
 Docker basic commands- 
 
-Run command   it is use to run container from an image. 
-Like- 
+1- docker run nginx-  Docker run command is used to run a container from an image. 
+                      Running the docker run nginx command will run an instance of the nginx application on the docker host, if it already exists. If image is not present in the                         host, it will go out to docker hub and pull that down. But this only done the first time. For the subsequent executions the same image will be reused.
 
-1-	Docker run nginx  -   docker run command is used to run a container from an image. 
-Like-
-Running the docker run nginx command will run an instance of the nginx application on the docker host, if it already exists. If image is not present in the host, it will go out to docker hub and pull that down. But this only done the first time. For the subsequent executions the same image will be reused.
-
-2-	Docker ps – lists all running containers and some basic information about them such as the container ID, the name of the image that we used to run containers, the current status, name of the containers.
-          Each container get random container ID an name created for it by Docker. 
+2- docker ps– Lists all running containers and some basic information about them such as the container ID, the name of the image that we used to run containers, the current                      status, name of the containers. Each container get random container ID an name created for it by Docker. 
               
-3-	Docker ps -a -   to see all containers running or not. This output include running and previously stopped or exited containers. 
+3- docker ps -a- To see all containers running or not. This output include running and previously stopped or exited containers. 
 
-To stop docker – 
-4-	Docker stop name docker- to stop the running container use this command. To stop container provide container ID or name  
+4- docker stop <Container.name>- To stop the running container use this command. To stop container provide container ID or name. 
+
+5- docker rm container name– use this command to remove a stopped or exited container permanently.
+
+6- docker image– To see all the images available images and their sizes.
+
+7- docker rmi <imagename>– To remove an image that no longer plan to use, remove from rmi command. Be sure no container is running off of that image before attempting to remove                               the image, you must stop and delete all the dependent containers to be able to delete an image. 
 
 
-To remove docker container 
-5-	Docker rm container name – use this command to remove a stopped or exited container permanently.
+8- docker pull <image.name>— this command only pull the image and not run the container. 
 
-To see all the image that is in the docker 
-6-	Docker image – to see all the images available images and their sizes. 
-7-	Docker rmi imagename – to remove an image that no longer plan to use, remove from rmi command. Be sure no container is running off of that image before attempting to remove the image, 
-           you must stop and delete all the dependent containers to be able to delete an image. 
 
-To pull – download an image
-8-	Docker pull image name—this command only pull the image and not run the container. 
+
+
+
 9-	Like  -  in this case docker pull nginx command pulls the Ubuntu image and stores it in our host. 
  
 
