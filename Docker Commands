@@ -1,0 +1,68 @@
+
+Docker basic commands- 
+
+Run command   it is use to run container from an image. 
+Like- 
+
+1-	Docker run nginx  -   docker run command is used to run a container from an image. 
+Like-
+Running the docker run nginx command will run an instance of the nginx application on the docker host, if it already exists. If image is not present in the host, it will go out to docker hub and pull that down. But this only done the first time. For the subsequent executions the same image will be reused.
+
+2-	Docker ps – lists all running containers and some basic information about them such as the container ID, the name of the image that we used to run containers, the current status, name of the containers.
+          Each container get random container ID an name created for it by Docker. 
+              
+3-	Docker ps -a -   to see all containers running or not. This output include running and previously stopped or exited containers. 
+
+To stop docker – 
+4-	Docker stop name docker- to stop the running container use this command. To stop container provide container ID or name  
+
+
+To remove docker container 
+5-	Docker rm container name – use this command to remove a stopped or exited container permanently.
+
+To see all the image that is in the docker 
+6-	Docker image – to see all the images available images and their sizes. 
+7-	Docker rmi imagename – to remove an image that no longer plan to use, remove from rmi command. Be sure no container is running off of that image before attempting to remove the image, 
+           you must stop and delete all the dependent containers to be able to delete an image. 
+
+To pull – download an image
+8-	Docker pull image name—this command only pull the image and not run the container. 
+9-	Like  -  in this case docker pull nginx command pulls the Ubuntu image and stores it in our host. 
+ 
+
+              Containers are not meant to host an operating system. Containers are meant to run a specific task or process such as to host an instance of web server, Application server database, or simply carry some kind of computation or analysis task.  Once the task is complete the container exits. A container only lives as long as the process inside it is alive. 
+  If the   web service inside the container is stopped or crashed, then the container exits. This is why when you run a container form an ubuntu image, it stops immediately. Because Ubuntu is just an image of an operating system that is used as the base image for other applications.  There is no process or application running in it by default. 
+
+
+Sleep Command-
+              If the image is not running any service, as is the case with ubuntu, you could instruct docker to run a process with the docker run command. 
+
+10-	   Like-   docker run ubuntu sleep 5
+       A sleep command with a duration of 5 seconds. When the container starts, it runs to sleep command and goes in to sleep for 5 seconds. Post with the sleep command exits and the container stops.  
+
+
+Exec- execute a command-  if you want to see the contents of a file inside this particular container.
+
+11-	Docker exec containername cat /etc/hosts- 
+To see content of the file inside this particular container. This command executes a command on my docker container. This command prints contains of the /etc/host file.
+
+12-	Docker inspect (container name)-   we can use this command to get low level configuration information about carious docker objects like images, containers, volumes networks nodes etc. like in which node a. container is deployed or what ports it listens to. it allows us to inspect multiple objects of different types in one go.
+
+
+To see version of docker server engine running on the host. 
+13-	   Docker version
+What is the Alpine?    
+Alpine Linux is a popular OS choice for running container
+
+NGINX is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. I
+
+BusyBox packages together multiple, common UNIX utilities (or applets) into one executable binary. helps you create your own Linux distribution.
+
+And Ubuntu isn't just for the desktop, it is used in data centres around the world powering every kind of server imaginable and is by far, the most popular operating system in the cloud.
+
+Python is an alternative to the bash command language for scripting in Linuux
+Docker run -it imagename bash  for run docker image 
+ Example- docker run -it redis bash 
+  
+
+
